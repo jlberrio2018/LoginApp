@@ -1,6 +1,6 @@
 const express = require('express');
 const conectarDB = require('./config/db');
-
+const authRoutes = require('./routes/authRoutes');
 // Conectar a la base de datos
 conectarDB();
 
@@ -14,6 +14,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Hola mundo: ADSO 2024');
 });
+
+// Usar rutas de autenticación
+app.use('/api/auth', authRoutes);
 
 // Configurar el puerto en el que escuchará el servidor
 const PORT = 5000;
